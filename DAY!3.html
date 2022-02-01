@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    body{
+        height: 200px;
+        }
+        button{
+            width: 20%;
+            height: 50px;
+            display: grid;
+          cursor: pointer;
+         text-align: center;
+         border: 2px;
+         background-image: url(https://www.unscreen.com/assets/screen-0183719fdbac58e89cfb0a8d249d1c63139b6d0c7dc7d94e0b0e508564b6136a.svg);
+         color: whitesmoke;
+         justify-content: center;
+        margin: auto;
+        }
+        
+        .active {
+          background-color: #ccc; 
+        }
+        
+        div {
+         
+          display: none;
+        
+          overflow: hidden;
+        }
+        </style>
+        </head>
+        <body>
+        
+        
+        
+        <button >Objects</button>
+        <div >
+          <li>Object are non-primitive data type</li>
+          <li>It has key values and pairs</li>
+          <li>we can assign property and value</li>
+          <li>We can create multiple objects</li>
+          <li>We can get particular value with the help of dot operator or [] braket</li>
+          <li>Objects are mutable</li>
+        </div>
+        
+        <button >Arrays</button>
+        <div >
+         <li>Arraysare non primitive data structure</li>
+         <li>An array contains number of data values</li>
+         <li>Arrays are mutable</li>
+         <li>We can store boolean value,string,numbers in same arrays</li>
+        </div>
+        
+        <button >Functions</button>
+        <div>
+         <li>A function is the fundamental building blocks in java script</li>
+         <li>We can create function and give some set of instructions to them</li>
+         <li>Functions are immutable</li>
+         <li>We can create our own functtion</li>
+         
+        </div>
+        <button >Strings</button>
+        <div >
+         <li>Strings are primitive data types</li>
+         <li>Strings are Immutable</li>
+         <li>we cant re assign the values once it set</li>
+         <li>Strings are part of arrays we can they are building blocks of arrays</li>
+        
+         
+         
+        </div>
+        <button >Numbers</button>
+        <div >
+         <li>Numbers are primitive data types</li>
+         <li>Numbersare Immutable</li>
+         <li>we cant re assign the values once it set</li>
+         <li>Numbers are part of arrays we can they are building blocks of arrays</li>
+         <li>We have some properties for numbers example like;{Math.floor,Math.ceil} etc</li>
+         <li>NAN is refer for not a number</li>
+        
+        </div>
+        <button >Null</button>
+        <div >
+         <li>Null means there is no value exist and no value</li>
+         <li>Null has primitive value</li>
+         
+        </div>
+        <button >Undefined</button>
+        <div>
+         <li>it is primitive type</li>
+         <li>it is the global object</li>
+         <li>Undefined is Immutable</li>
+         
+        </div>
+        
+        
+        <script>
+        var desc = document.querySelectorAll("button");
+
+        
+        
+        for (var i = 0; i < desc.length; i++) {
+          desc[i].addEventListener("click", function() {
+            this.classList.toggle("active");
+            var detail = this.nextElementSibling;
+            //cli
+            if (detail.style.display === "block") {
+              detail.style.display = "none";
+            } else {
+              detail.style.display = "block";
+            }
+          });
+        }
+        </script>
+        
+        </body>
+        </html>
+        
