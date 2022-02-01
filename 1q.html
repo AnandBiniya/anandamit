@@ -1,0 +1,33 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+
+<script>// Implement the inheritance model of your family both using Object.create().
+// Starting from your grandparents to your parents you.
+// Create a two min video explaining the prototype chain for the above example. Show [[prototype]] object.
+
+
+
+const grandfather={
+    hair:"black",
+    eyes:"brown",
+    color:"brown",
+    language:"hindi",
+    
+}
+
+const father=Object.create(grandfather)
+father.height="6"
+
+console.log(father,grandfather)
+</script>

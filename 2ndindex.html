@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        form{
+            width: 60%;
+            margin: auto;
+            justify-content: center;
+        }
+        th{
+            width: 10%;
+            margin: auto;
+            padding: 10px;
+            border: 2px solid red;
+            color: whitesmoke;
+            background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbkN2fEKXvRVsL0YmaWtnTD3UgypMqSUkySA&usqp=CAU);
+        }
+        td{
+            width: 10%;
+            margin: auto;
+            background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRql5Lt_gzyivWwcTNe2_JRvWHnhhkud8ggEA&usqp=CAU);
+            color: whitesmoke;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th><h3>S.No</h3></th>
+                <th><h3>Name</h3></th>
+                <th><h3>Mobile</h3></th>
+                <th><h3>City</h3></th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</body>
+</html>
+<script>
+    var data=JSON.parse(localStorage.getItem("studentdata"))
+
+    data.map(function(elemet,index){
+        var row=document.createElement("tr")
+        var data1=document.createElement("td")
+        data1.textContent=index+1
+        var data2=document.createElement("td")
+        data2.textContent=elemet.name
+        var data3=document.createElement("td")
+        data3.textContent=elemet.number
+        var data4=document.createElement("td")
+        data4.textContent=elemet.city
+        
+
+        row.append(data1,data2,data3,data4)
+
+        document.querySelector("tbody").append(row)
+    })
+    
+</script>
