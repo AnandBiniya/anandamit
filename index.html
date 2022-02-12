@@ -1,241 +1,208 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-  </head>
 
-  <style>
-    body {
-      margin: 0px;
-    }
-
-    .main {
-      height: 50px;
-    }
-
-    .navbar {
-      height: 50px;
-      background-color: #2874f0;
-
-      display: flex;
-      padding-left: 300px;
-      padding-right: 300px;
-      align-items: center;
-      gap: 20px;
-    }
-
-    .flipkart_logo {
-      width: 100px;
-    }
-
-    .search_logo {
-      width: 33px;
-    }
-    input {
-      width: 500px;
-      height: 25px;
-
-      border: solid 1px white;
-    }
-    .navbar_rhs {
-      display: flex;
-      gap: 20px;
-
-      color: white;
-      font-size: 16px;
-      font-weight: 500;
-      padding-left: 200px;
-    }
-
-    .search_btn {
-      background-color: white;
-      border: solid 1px white;
-      background-color: navy;
-      border-radius: 0 2px 2px;
-    }
-
-    .search {
-      display: flex;
-      align-items: center;
-    }
-
-    .products{
-
+    <style>
+        #container{
+            background-color: orangered;
+            display: grid;
+            width: 60%;
+            margin: auto;
+            height: 400px;
+          text-align: center;
+            background-image: url(data:image/png;base64,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https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsng5pC805pWG6eSH36eKBetKw4ELq0cGjCw&usqp=CAU);
+        }
+        
+      label {
+  margin: auto;
+  font-size: 40px;
+  color: black;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+      }
+      #myorder {
         display: grid;
-        grid-template-columns: 400px 400px 400px 400px;
+        grid-template-columns: repeat(3, 1fr);
+        margin: auto;
+        width: 60%;
+        grid-gap: 20px;
 
-        justify-content: end;
-    }
-
-    #product-img{
-
-        width:200px
-
-    }
-
-    h1{
-
-        text-align: center;
-        margin-top: 80px;
-        margin-bottom: 80px;
-
-    }
-
-    #product-rating{
-
-        background-color:green;
-        color: white;
-        border: solid 1px green;
-    }
-
-  </style>
-
-  <body>
-    <div class="main">
-      <div class="navbar">
-        <div class="logo">
-          <img
-            class="flipkart_logo"
-            src="https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/flipkart-plus_8d85f4.png"
-            alt=""
-          />
-        </div>
-
-        <div class="search">
-          <input type="text" placeholder="Search for Products, Brands and more" />
-
-          <button  class="search_btn"><img class="search_logo" src="file:///C:/Users/anand/OneDrive/Desktop/online%20store/search.svg" alt="" /></button>
-        </div>
-
-        <div class="navbar_rhs">
-          <div>Profile</div>
-          <div>More</div>
-          <div>Cart</div>
-        </div>
-        </div>
-
-
-        <h1>ShopProducts</h1>
-
-        <div class="products">
-
+      }
+      form{
+        padding: 5px;
+      }
+      input{
+        margin: 5px 10px;
+      }
      
+      img {
+        width: 100%;
+      }
+      h1,p{
+          font-size: 50px,20px;
+          color: beige;
+      }
+    
+    
+    </style>
+</head>
+<body>
+<div id="container">
+    <h1>Welcome to MCDONALD SHOP</h1>
 
-        </div>
-      </div>
-    </div>
-  </body>
+    <p>Hello order please</p>
+
+    <form action="">
+        <label for="">Menu</label>
+        <br>
+
+        <input type="checkbox" 
+        name="foodname"
+       
+        value="Spicy Crispy Chicken Sandwich"
+        />        Spicy Crispy Chicken Sandwich
+      
+        <input type="checkbox" 
+        name="foodname"
+      
+        value="Spicy chichken burger"
+        />Spicy chichken burger
+     
+        <input type="checkbox" 
+        name="foodname"
+    
+        value="Mexican Aloo ticki burger"
+        />Mexican Aloo ticki burger
+      
+        
+        <input type="checkbox" 
+        name="foodname"
+        
+        value="American cheese supreme"
+        />American cheese supreme
+      
+
+      
+        <input type="checkbox" 
+        name="foodname"
+      
+        value="Big spicy chicken wrap"
+        />Big spicy chicken wrap
+       
+        
+        <input type="checkbox" 
+        name="foodname"
+     
+        value="American mud pie"
+        />American mud pie
+      
+       
+        <input type="checkbox" 
+        name="foodname"
+      
+        value="coco"
+        />Coco
+    
+        <br>
+
+        <input type="submit" value="orderfood">
+
+    </form>
+
+    <div id="Numberorder"></div>
+    <div id="myorder"></div>
+</div>
+</body>
 </html>
 
 <script>
-  var products = [
-    {
-      name: "realme C20 (Cool Blue, 32 GB) (2 GB RAM)",
-      img: "https://rukminim1.flixcart.com/image/832/832/kn7sdjk0/mobile/w/h/q/c20-rmx3063-realme-original-imagfxfzay72jqvh.jpeg?q=70",
-      price: "₹ 6999",
-      rating: "4.3",
-    },
-    {
-      name: "realme Narzo 30 (Racing Silver, 64 GB) (4 GB RAM)",
-      img: "https://rukminim1.flixcart.com/image/832/832/kq18n0w0/mobile/u/w/b/narzo-30-rmx2156-realme-original-imag45ymfpry9ecq.jpeg?q=70",
-      price: "₹ 12499",
-      rating: "4.3",
-    },
-    {
-      name: "OPPO Reno6 5G (Aurora, 128 GB) (8 GB RAM)",
-      img: "https://rukminim1.flixcart.com/image/832/832/kr2e3680/mobile/b/q/v/reno6-5g-cph2251-oppo-original-imag4xp73qsqrtnt.jpeg?q=70",
-      price: "₹ 29990",
-      rating: "4.3",
-    },
-    {
-      name: "SAMSUNG Galaxy F41 (Fusion Blue, 128 GB) (6 GB RAM)",
-      img: "https://rukminim1.flixcart.com/image/832/832/kfzq8i80/mobile/y/j/f/samsung-galaxy-f41-sm-f415fzbdins-original-imafwbnpdafmeuj6.jpeg?q=70",
-      price: "₹ 19990",
-      rating: "4.3",
-    },
-    {
-      name: "OPPO Reno6 5G (Aurora, 128 GB) (8 GB RAM)",
-      img: "https://rukminim1.flixcart.com/image/832/832/kg8avm80/mobile/y/7/n/apple-iphone-12-dummyapplefsn-original-imafwg8dqq7z8cgh.jpeg?q=70",
-      price: "₹ 29990",
-      rating: "4.3",
-    },
-    {
-      name: "APPLE iPhone 12 (Blue, 128 GB)",
-      img: "https://rukminim1.flixcart.com/image/832/832/kr2e3680/mobile/b/q/v/reno6-5g-cph2251-oppo-original-imag4xp73qsqrtnt.jpeg?q=70",
-      price: "₹ 72990",
-      rating: "4.3",
-    },
-    {
-      name: "vivo Y51A (Crystal Symphony, 128 GB) (8 GB RAM)",
-      img: "https://rukminim1.flixcart.com/image/832/832/kk1h5e80/mobile/3/7/u/vivo-y51a-v2031-original-imafzh2ud9t3wsm7.jpeg?q=70",
-      price: "₹ 17990",
-      rating: "4.3"
-    },
-  ];
-
-  //Array
+    let id=1001
 
 
-  var products_div = document.querySelector('.products')
+    document.querySelector("form").addEventListener("submit",datas);
 
-  for (let i = 0; i < products.length; i++) {
-   
-    var div = document.createElement("div");
+    function datas(ele){
+        ele.preventDefault();
+        id++;
 
-    var img = document.createElement("img");
-
-    img.src = products[i].img
-
-    img.id = "product-img"
+        foodorderdata=document.querySelectorAll('input[name="foodname"]:checked')
+        let orderlist=[];
 
 
-    var title = document.createElement('p')
+        foodorderdata.forEach(function (ele){
+            orderlist.push(ele.value)
+        })
+        
 
-    title.innerText = products[i].name
+      
+
+    orderlist
+
+    if(orderlist.length!=0){
+        var promises=new Promise(function (solve,error){
+          setTimeout(function(){
+              solve("datareceived")
+          },2000)  
+        })
 
 
-    var rating = document.createElement('button')
+        promises.then(function (){
+    document.getElementById("myorder").style.display="" 
+     
+      document.getElementById("Numberorder").innerHTML = `ID${id}`;
 
-    rating.innerText=products[i].rating
-
-    rating.id = "product-rating"
-
-
-    var price = document.createElement('p')
-
-    price.innerText = products[i].price
+      var itemorder=[];
 
 
-    div.onclick = function(){
+      for(let i=0;i<orderlist.length;i++){
+        itemorder[i]=items[orderlist[i]];
+      }
 
-        showProduct(products[i])
+      displayorder(itemorder);
 
+        function displayorder(value){
+            document.getElementById("myorder").innerHTML="";
+            value.forEach(function (ele){
+                var div=document.createElement("div");
+
+
+                var img=document.createElement("img");
+                img.src=ele
+
+                div.append(img);
+
+                document.getElementById("myorder").append(div)
+            });
+        }
+    });
+
+    }else{
+        alert("please")
+       }
     }
 
 
-    div.append(img, title, rating, price)
+        let items = {
+      "Spicy Crispy Chicken Sandwich":
+        "https://s7d1.scene7.com/is/image/mcdonalds/t-mcdonalds-spicy-crispy-chicken-sandwich:1-4-product-tile-desktop",
+      "Spicy chichken burger":
+        "https://s7d1.scene7.com/is/image/mcdonalds/t-mcdonalds-Big-Mac-1:1-4-product-tile-desktop",
+      "Mexican Aloo ticki burger":
+        "https://s7d1.scene7.com/is/image/mcdonalds/t-mcdonalds-Quarter-Pounder-with-Cheese-1:1-4-product-tile-desktop",
+      "American cheese supreme":
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDVqEf7jcFb2X5UeFIP2OX0yagfgsroPvmaA&usqp=CAU",
+      "Big spicy chicken wrap":
+        "data:image/jpeg;base64,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",
+      "American mud pie":
+        "https://mcdonaldsblog.in/wp-content/uploads/2021/08/Three-New-Shakes_Italian-Mocha-Shake.jpg",
+      "coco":
+        "https://s7d1.scene7.com/is/image/mcdonalds/t-mcdonalds-Coca-Cola-Classic-Small-1:1-4-product-tile-desktop",
+    };
 
-    products_div.append(div)
+      
 
-
-
-
-  }
-
-
-
-  function showProduct(product){
-  
-  
-    console.log('product:', product)
-
-
-    localStorage.setItem("clicked_product", JSON.stringify(product))
-
-    window.location.href='product.html'
-
-
-  }
-
-
+    
 </script>
