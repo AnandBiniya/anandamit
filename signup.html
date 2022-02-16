@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        #signup{
+            width: 60%;
+            height: 300px;
+            background-color: pink;
+            margin: auto;
+        }
+        #nav{
+            width: 60%;
+            display: flex;
+            gap: 20px;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <div id="nav">
+
+        <h1>a</h1>
+        <a href="index.html">Home</a>
+        <a href="login.html">Login</a>
+        <a href="signup.html">Sign up</a>
+    </div>
+
+    <div id="signup">
+        <form>
+            <h1>Signup</h1>
+            <input type="text" placeholder="enter your name" id="name">
+            <br>
+            <input type="number" id="mobile" placeholder="enter your mobile number" required>
+            <br>
+            <input type="email" name="" id="email" placeholder="enter email" required>
+            <br>
+            <input type="password" id="pass" placeholder="enter your password" required>
+            <input type="submit" id="submit" value="submit">
+            <br>
+
+
+        </form>
+    </div>
+</body>
+</html>
+
+<script>
+
+    console.log("hello")
+     document.querySelector("form").addEventListener("submit",signup)
+    ele.preventDefault()
+
+    
+    function signup(ele){
+        ele.preventDefault()
+        let name=document.getElementById("name").value 
+        let number=document.getElementById("mobile").value
+
+        let email=document.getElementById("email").value
+
+        let pass=document.getElementById("pass").value
+
+        let object={
+            name:name,
+            number:number,
+            email:email,
+            pass:pass
+        }
+        let data=JSON.parse(localStorage.getItem("signdata"))||[]
+
+        data.push(object)
+
+        localStorage.setItem("signdata",JSON.stringify(data));
+        alert("sign up succefully")
+        window.location.href="login.html"
+   }
+</script>

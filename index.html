@@ -3,147 +3,227 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=div, initial-scale=1.0">
     <title>Document</title>
-
     <style>
-      #showmovies{
-        width: 80%;
-        height: 100%;
-        display: grid;
-       justify-content: center;
-        grid-template-columns: repeat(3,1fr);
-        margin: auto;
-  
-      }
-     body{
-       justify-content:center;
-       margin: auto;
-   }
-      
+#somethingnew{
+
+
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: repeat(3,1fr);
+}
+#somethingnew img{
+  height: 169px;
+  width: auto;
+  background-color: pink;
+}
+#somethingnew >div{
+  display: flex;
+  height: 170px;
+  border: 1px solid grey;
+
+}
+#somethingnew >div >div:nth-child(2){
+/* background-color: blue; */
+margin-left: 10px;
+height: 169px;
+padding: 0px 0px  10px 0px;
+box-sizing: border-box;
+}
+
+#hoverling  img{
+  width: 100%;
+  height: 500px;
+
+}
     </style>
 </head>
 <body>
-  
-    <input type="text" id="find">
-    <br>
-    <button onclick="findamovie()">Find Data</button>
-   
-    <div id="showmovies">show movies</div>
+    <div id="nav">
+        <a href="index.html">Home</a>
+        <a href="login.html">Login</a>
+        <a href="signup.html">Sign up</a>
+    </div>
+<div id="hoverling">
+    <!-- slideshow -->
+</div>
+
+<div id="sorting">
+    <select name="" id="sortingnew"  onchange="rating()">
+    <option value="">Rating sort</option>
+    <option value="sortlowtohigh" id="sortLH">Low to high</option>
+    <option value="sorthighttolow" id="sortHL">High to Low</option>
+</select>
+</div>
+<div id="somethingnew">
+<!-- //container -->
+</div>
+
 </body>
 </html>
-<script>
-  
 
-
-   let key="fc09b001"
-
-
-
-   async function findamovie1(ele){
-
-try{
-//let find=document.querySelector("#find").value;
-
-
-let url=`http://www.omdbapi.com/?i=tt3896198&apikey=fc09b001&s={Avatar}`;
-
-///`
-
-
-
-let res=await fetch(url)
-
-let data=await res.json()
-
-
-
-console.log(data)
-displaydata(data.Search)
-
-}catch(err){
-    console.log(err)
-}
-}
-findamovie1()
-
-
-
-
-
-
-
-
-
-
-  async function findamovie(ele){
-
-    try{
-    let find=document.querySelector("#find").value;
- //   console.log("find",find)
-
-    let url=`http://www.omdbapi.com/?i=tt3896198&apikey=fc09b001&s=${find}`;
-
-    ///`
+<script >
+    var slideimage=[
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRapZhMogoEJ7baNvnTKDC9Hl__R32SKC9oFA&usqp=CAU",
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQl0mR0WU-c4BWVACxv-AU0bcu8HvwWA_8Ktg&usqp=CAU",
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOssqfGSuUlzxqY_D6NyouAlgpUnT51Kh7Sw&usqp=CAU",
+    // "https://www.tellychakkar.com/sites/www.tellychakkar.com/files/images/movie_image/2020/03/31/proof.jpg",
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhe8_qKI_LoN_nS_Z9Xj_1z-YCYAqHUDm49Q&usqp=CAU",
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSKsEcPBL3ARvMfafWgylzrDZLV1r1infflWQ&usqp=CAU",
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsFa6xBnjw0A3Lb5zefda7AcyFl6IiAB62hg&usqp=CAU",
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnqI8jpuWWkr_6H7wGDj-IiLuFfkJRJ_uEmg&usqp=CAU"
     
-
-
-let res=await fetch(url)
-
-let data=await res.json()
-
-
-
-console.log(data)
-//displaydata(data.Search)
-if(data.Response=="True"){
-  displaydata(data.Search)
-
-}else{
-  alert("No Movies")
-}
-    }catch(err){
-        console.log(err)
-    }
-  }
-
-  function displaydata(arr){
+       ];
+var x=slideimage.length
  
+    var image=document.createElement("img")
+    var i=0;
+    var a=setInterval(function(){
+        if(i==x){
+            i=0
+        }
+        image.src=slideimage[i]
 
-    let container=document.querySelector("#showmovies");
-container.innerHTML=""
-    arr.map(function (ele){
-let div=document.createElement("div");
-let image=document.createElement("img")
-
-let title=document.createElement("h1")
-
-let year=document.createElement("p")
-
-let idmb=document.createElement("p")
-
-image.src=ele.Poster
-title.textContent=ele.Title 
-year.textContent=ele.Year
-idmb.textContent=ele.imdbID
+        document.getElementById("hoverling").append(image);
+        i++
+    },2000)
 
 
 
-div.append(image,title,year,idmb)
+    var movieslist=[
+        {
+    movieImage:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQzUzMwuhNNc1hVcd1j-fuiIx3lMN_juJJZQyAxOxfHvA9hJv_4omZMolGq5LJxxwIGSGY&usqp=CAUhttps://m.media-amazon.com/images/M/MV5BZjdkOTU3MDktN2IxOS00OGEyLWFmMjktY2FiMmZkNWIyODZiXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_.jpg" ,
+      movieName: "Cinderella",
+      movieCategory: " Romance/Family ‧",
+      movieRelease: "2015",
+      movieRating: 8.2,
+    },
+    {
+      movieImage:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvt3MRZ_2RPlxu8qbQ0EH0tu9GLSBQIWZ6IQ&usqp=CAU",
+      movieName: "Moana",
+      movieCategory: " ‧ Family/Musical",
+      movieRelease: "2016",
+      movieRating: 8.8,
+    },
+    {
+      movieImage:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRkt-sJUiUi6RxwHk7PCyTXSlq-VQ11OZUXIA&usqp=CAU",
+      movieName: "The Good Dinosaur",
+      movieCategory: "Adventure/Family ",
+      movieRelease: "2015",
+      movieRating: 8.2,
+    },
+    {
+      movieImage:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqmSmwUfGSVTbjDy_rid5ehy2xAlRRiIjhMQ&usqp=CAU",
+      movieName: "Frozen",
+      movieCategory: "animated musical fantasy",
+      movieRelease: "2013",
+      movieRating: 8.7,
+    },
+    {
+      movieImage:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTASNheq83djXFDK1AXgHyT1PC6UyhnGwoeoA&usqp=CAU",
+      movieName: "The Croods",
+      movieCategory: "Family/Adventure",
+      movieRelease: "2013",
+      movieRating: 8.1,
+    },
+    {
+      movieImage:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS09bMLjVfl7RQk1n9WmFFcdNeYyyoYwjgOhw&usqp=CAU",
+      movieName: "Raya and the Last Dragon",
+      movieCategory: "Family/Fantasy",
+      movieRelease: "2021",
+      movieRating: 8.4,
+    },
+    {
+      movieImage:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQlsQtuXL73fgJAG7viiNTJXaL76mZ4wsB6QQ&usqp=CAU",
+      movieName: "Snow White and the Huntsman",
+      movieCategory: "Fantasy/Action",
+      movieRelease: "2012",
+      movieRating: 8.9,
+    },
+    {
+      movieImage:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBhmv0mJFMtYwLeMLfJf-eELscZbnKw63eXg&usqp=CAU",
+      movieName: "Beauty and the Beast",
+      movieCategory: "Romance",
+      movieRelease: "2017",
+      movieRating: 8.1,
+    },
+    {
+      movieImage:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOdK7tBW742fIcFFZCJZ74JLtgvC5spZFx4Q&usqp=CAU",
+      movieName: "Gods of Egypt",
+      movieCategory: " Action, Adventure, Fantasy",
+      movieRelease: "2016",
+      movieRating: 8.3,
+    },
+    ]
 
-container.append(div)
+    localStorage.setItem("movie",JSON.stringify(movieslist))
+    var data=JSON.parse(localStorage.getItem("movie"))
+    console.log(movieslist)
+
+ displaydata(movieslist)
 
 
-    })
-    
-  }
+    function displaydata(data){
+        document.getElementById("somethingnew").innerHTML="";
+
+        data.map(function(ele){
+            var div1=document.createElement("div");
+            var div2=document.createElement("div")
+           var div3=document.createElement("div")
+            var movieName=document.createElement("h2")
+
+            movieName.innerHTML=ele.movieName
+
+            var  movieCategory=document.createElement("p")
+            movieCategory.textContent=ele.movieCategory
+
+            var  movieRelease=document.createElement("p")
+            movieRelease.textContent=ele.movieRelease
+            
+         var   movieRating=document.createElement("h4")
+         movieRating.textContent=`${ele.movieRating}★`;
+      var movieImage=document.createElement("img")
+      movieImage.setAttribute("src", ele.movieImage);
+div2.append(movieImage);
+    div3.append(movieName,  movieCategory,  movieRelease,  movieRating);
+    div1.append(div2,div3);
+      document.querySelector("#somethingnew").append(div1);
+        })
+    }
 
 
 
 
 
-  
+    function rating(){
+        var value=document.getElementById("sortingnew").value
+ console.log(value)
+        if(value==""){
+            displaydata(movieslist);
 
 
+        }else if(value=="sortlowtohigh"){
+            console.log(value);
+            movieslist.sort(function (l,m){
+                return l.movieRating-m.movieRating
+            });
+            displaydata(movieslist);
 
+        }else if(value=="sorthighttolow"){
+          movieslist.sort(function(l,m){
+   return m.movieRating-l.movieRating
+            })
+            displaydata(movieslist)
+        }
+    }
 </script>
